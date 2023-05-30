@@ -35,13 +35,15 @@ func (h *handler) FindUsers(c *gin.Context) {
 		users, err := h.UserRepository.FindUsers()
 		if err != nil {
 			c.JSON(http.StatusBadRequest, resultdto.ErrorResult{Status: http.StatusBadRequest, Message: err.Error()})
-
+			return
 		}
 
 		if len(users) > 0 {
 			c.JSON(http.StatusOK, resultdto.SuccessResult{Status: http.StatusOK, Message: "Data for all users was successfully obtained", Data: users})
+			return
 		} else {
 			c.JSON(http.StatusBadRequest, resultdto.ErrorResult{Status: http.StatusBadRequest, Message: "No record found"})
+			return
 		}
 	} else {
 		c.JSON(http.StatusUnauthorized, resultdto.ErrorResult{Status: http.StatusUnauthorized, Message: "Sorry, you're not Admin"})
@@ -49,9 +51,10 @@ func (h *handler) FindUsers(c *gin.Context) {
 }
 
 func (h *handler) GetUser(c *gin.Context) {
-	id, _ := strconv.Atoi(c.Param("id"))
+	userLogin := c.MustGet("userLogin")
+	userId,_ := userLogin.(jwt.MapClaims)["id"].(float64)
 
-	user, err := h.UserRepository.GetUser(id)
+	user, err := h.UserRepository.GetUser(int(userId))
 	if err != nil {
 		 c.JSON(http.StatusBadRequest, resultdto.ErrorResult{Status: http.StatusBadRequest, Message: err.Error()})
 	}

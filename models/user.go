@@ -9,7 +9,7 @@ type User struct {
 	Phone       string                `json:"phone" gorm:"type: varchar(255)"`
 	Address     string                `json:"address" gorm:"type: varchar(255)"`
 	Profile     ProfileResponse       `json:"profile"`
-	Transaction []TransactionResponse `json:"transaction" gorm:"many2many:TransactionID"`
+	Transaction []TransactionResponse `json:"transaction"`
 }
 
 type UsersProfileResponse struct {

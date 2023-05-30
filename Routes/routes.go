@@ -7,4 +7,6 @@ func RouteInit(r *gin.RouterGroup) {
 	UserRoutes(r)
 	ProfileRoutes(r)
 	CountryRoutes(r)
+	TripRoutes(r)
+	TransactionRoutes(r)
 }

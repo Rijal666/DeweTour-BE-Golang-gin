@@ -32,7 +32,7 @@ func (h *handlerProfile) GetProfile(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, resultdto.ErrorResult{Status: http.StatusBadRequest, Message: err.Error()})
 	}
 	c.JSON(http.StatusOK, resultdto.SuccessResult{Status: http.StatusOK, Message: "Profile data successfully obtained", Data: convertResponseProfile(profile)})
-	return
+	
 }
 
 func (h *handlerProfile) CreateProfile(c *gin.Context) {
@@ -69,7 +69,7 @@ func (h *handlerProfile) CreateProfile(c *gin.Context) {
 	profile, _ = h.ProfileRepository.GetProfile(profile.ID)
 
 	c.JSON(http.StatusOK, resultdto.SuccessResult{Status: http.StatusOK, Message: "profile data created successfully", Data: convertResponseProfile(profile)})
-	return
+	
 }
 
 func (h *handlerProfile) DeleteProfile(c *gin.Context)  {
@@ -103,7 +103,7 @@ func (h *handlerProfile) DeleteProfile(c *gin.Context)  {
 	fmt.Println("File " + fileName + " deleted successfully")
 
 	 c.JSON(http.StatusOK, resultdto.SuccessResult{Status: http.StatusOK, Message: "Profile data deleted successfully", Data: convertResponseProfile(data)})
-	 return
+	 
 }
 
 func convertResponseProfile(u models.Profile) profiledto.ProfileResponse  {

@@ -2,31 +2,33 @@ package tripdto
 
 type CreateTripRequest struct {
 	ID             int    `json:"id"`
-	Title          string `json:"title" gorm:"type: varchar(255)" validate:"required"`
-	CountryID      int    `json:"country_id" gorm:"type: int" validate:"required"`
-	Accomodation   string `json:"accomodation" gorm:"type: varchar(255)" validate:"required"`
-	Transportation string `json:"transportation" gorm:"type: varchar(255)" validate:"required"`
-	Eat            string `json:"eat" gorm:"type: varchar(255)" validate:"required"`
-	Day            string `json:"dat" gorm:"type: varchar(255)" validate:"required"`
-	Night          string `json:"night" gorm:"type: varchar(255)" validate:"required"`
-	DateTrip       string `json:"date_trip" gorm:"type: varchar(255)" validate:"required"`
-	Price          string `json:"price" gorm:"type: varchar(255)" validate:"required"`
-	Quota          string `json:"quota" gorm:"type: varchar(255)" validate:"required"`
-	Description    string `json:"description" gorm:"type: varchar(255)" validate:"required"`
-	Photo          string `json:"photo" gorm:"type: varchar(255)" validate:"required"`
+	Title          string `json:"title" form:"title" validate:"required"`
+	CountryId      int    `json:"country_id" validate:"required" form:"country_id"`	
+	Accomodation   string `json:"accomodation" form:"accomodation" validate:"required"`
+	Transportation string `json:"transportation" form:"transportation" validate:"required"`
+	Eat            string `json:"eat" form:"eat" validate:"required"`
+	Day            int    `json:"day" form:"day" validate:"required"`
+	Night          int    `json:"night" form:"night" validate:"required"`
+	DateTrip       string `json:"date_trip" form:"date_trip" validate:"required"`
+	Price          int    `json:"price" form:"price" validate:"required"`
+	Quota          int    `json:"quota" form:"quota" validate:"required"`
+	Description    string `json:"description" form:"description" validate:"required"`
+	Image          string `json:"image" form:"image" validate:"required"`
 }
-type UpdateTripRequest struct {
-	ID             int    `json:"id"`
-	Title          string `json:"title"`
-	CountryID      int    `json:"counter_id"`
-	Accomodation   string `json:"accomodation"`
-	Transportation string `json:"transportation"`
-	Eat            string `json:"eat"`
-	Day            string `json:"dat"`
-	Night          string `json:"night"`
-	DateTrip       string `json:"date_trip"`
-	Price          string `json:"price"`
-	Quota          string `json:"quota"`
-	Description    string `json:"description"`
-	Photo          string `json:"photo"`
+
+type Update1TripRequest struct {
+	ID        int    `json:"id"`
+	Title     string `json:"title" form:"title"`
+	CountryId int    `json:"country_id" form:"country_id"`
+	// Country        models.CountryResponse `json:"country"`
+	Accomodation   string `json:"accomodation" form:"accomodation"`
+	Transportation string `json:"transportation" form:"transportation"`
+	Eat            string `json:"eat" form:"eat"`
+	Day            int    `json:"day" form:"day"`
+	Night          int `json:"night" form:"night"`
+	DateTrip       string `json:"date_trip" form:"date_trip"`
+	Price          int    `json:"price" form:"price"`
+	Quota          int    `json:"quota" form:"quota"`
+	Description    string `json:"description" form:"description"`
+	Image          string `json:"image" form:"image"`
 }

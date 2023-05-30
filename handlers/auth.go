@@ -104,7 +104,7 @@ func(h *handlerAuth) Login(c *gin.Context) {
 		Token: token,
 	}
 	c.JSON(http.StatusOK, resultdto.SuccessResult{Status: http.StatusOK, Message: "You have successfully logged in", Data: loginResponse})
-	return
+	
 	
 }
 

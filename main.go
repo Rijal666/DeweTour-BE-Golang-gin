@@ -19,7 +19,7 @@ func main() {
 
 	routes.RouteInit(r.Group("/api/v1"))
 
-	// r.Static("/uploads", "./uploads")
+	r.Static("/uploads", "./uploads")
 
 	fmt.Println("Server Started")
 	http.ListenAndServe("localhost:5000", r)

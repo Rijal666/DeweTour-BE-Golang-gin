@@ -15,6 +15,6 @@ func UserRoutes(r *gin.RouterGroup) {
 	h := handlers.HandlerUser(userRepository, profileRepository)
 
 	r.GET("/users", middleware.Auth(h.FindUsers))
-	r.GET("/user/:id", middleware.Auth(h.GetUser))
+	r.GET("/user", middleware.Auth(h.GetUser))
 	r.DELETE("/user/:id", middleware.Auth(h.DeleteUser))
 }
